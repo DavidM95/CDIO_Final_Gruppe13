@@ -34,7 +34,7 @@ public class CreateUser {
     public Response loginUser(UserDTO userDTO) {
 //        boolean loggedin = logincontroller.login(userDTO);
 //
-
+//        if(loggedin) {
         Controller controller = new Controller();
         controller.opretBruger();
         System.out.println("UserId: " + userDTO.getUserId() + "Username: " + userDTO.getUserName() + "UserIni: " + userDTO.getUserIni() + " userPassword: " + userDTO.getUserPassword() + "userRole: " + userDTO.getUserRole() );
