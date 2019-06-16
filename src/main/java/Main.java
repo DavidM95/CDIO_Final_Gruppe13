@@ -1,7 +1,7 @@
-import data.Connect;
-import data.IConnect;
-import data.dal.*;
-import data.dto.*;
+import DAL.Connect;
+import DAL.DAO.*;
+import DAL.DTO.*;
+import DAL.IConnect;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
