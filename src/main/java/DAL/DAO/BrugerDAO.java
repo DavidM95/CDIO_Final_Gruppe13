@@ -57,13 +57,14 @@ public class BrugerDAO implements IBrugerDAO {
 
             BrugerDTO brugerDTO = null;
 
-
-            IBrugerDTO user = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"),resultSet.getString("ini"), rolleliste,resultSet.getString("password"));
-
+            while(resultSet.next()) {
+                IBrugerDTO user = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"), resultSet.getString("ini"), rolleliste, resultSet.getString("password"));
+            return (BrugerDTO) user;
+            }
+            resultSet.close();
 //            while(resultSet.next()){
 //                brugerDTO = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"), resultSet.getString("brugerIni"), rolleliste, resultSet.getString("password"));
 //            }
-            return (BrugerDTO) user;
         } catch (SQLException e){e.printStackTrace();}
 
         return null;
