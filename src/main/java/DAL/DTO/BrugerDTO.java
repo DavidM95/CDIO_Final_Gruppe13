@@ -5,35 +5,49 @@ import java.util.List;
 
 public class BrugerDTO implements IBrugerDTO {
 
-    int brugerId;
-    String brugerNavn;
-    String brugerPassword;
-    String brugerIni;
+    int brugerID;
+    String brugernavn;
     ArrayList<String> roller;
+    String brugerIni;
+    String password;
 
-    public BrugerDTO(int brugerId, String brugerNavn, String brugerPassword,String brugerIni){
+    public BrugerDTO(int brugerID, String brugernavn, String brugerIni, ArrayList<String> roller, String password){
 
-        this.brugerId = brugerId;
-        this.brugerNavn = brugerNavn;
-        this.brugerPassword = brugerPassword;
-        this.brugerIni = brugerIni;
+        this.brugerID = brugerID;
+        this.brugernavn = brugernavn;
         this.roller = roller;
+        this.brugerIni = brugerIni;
+        this.password = password;
 
     }
 
-    public int getBrugerId() {
-        return this.brugerId;
+    public void setRoller(ArrayList<String> roller) {
+        this.roller = roller;
+    }
+
+    public void setBrugerIni(String brugerIni) {
+        this.brugerIni = brugerIni;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getBrugerID() {
+        return this.brugerID;
     }
 
     public String getBrugerNavn() {
-        return this.brugerNavn;
+        return this.brugernavn;
     }
 
-    public String getBrugerPassword() {
-        return this.brugerPassword;
+    public void setBrugerID(int brugerID) {
+        this.brugerID = brugerID;
     }
 
-    public String getBrugerIni(){return  this.brugerIni;}
+    public void setBrugernavn(String brugernavn) {
+        this.brugernavn = brugernavn;
+    }
 
     public String getRoller(int i) {
         return this.roller.get(i);
@@ -42,12 +56,24 @@ public class BrugerDTO implements IBrugerDTO {
     public List getRolleliste() {return  this.roller;}
 
     @Override
+    public String getBrugerIni() {
+        return this.brugerIni;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+
+    @Override
     public String toString() {
         return "BrugerDTO{" +
-                "brugerId=" + brugerId +
-                ", brugerNavn='" + brugerNavn + '\'' +
-                ", brugerPassword=" + brugerPassword +
+                "brugerID=" + brugerID +
+                ", brugernavn='" + brugernavn + '\'' +
+                ", ini=" + brugerIni +
                 ", roller=" + roller +
+                ", password=" + password +
                 '}';
     }
 }

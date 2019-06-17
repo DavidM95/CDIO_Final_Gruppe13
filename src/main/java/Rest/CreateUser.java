@@ -1,10 +1,6 @@
-package Rest;
-
-
-
+//package Rest;
 //
-//import Controllers.BrugeradministrationCTRL;
-//import DAL.DTO.BrugerDTO;
+//
 //
 //import javax.ws.rs.Consumes;
 //import javax.ws.rs.GET;
@@ -33,14 +29,14 @@ package Rest;
 //
 //
 //    @POST
-//    public Response opretUser(BrugerDTO brugerDTO) {
+//    public Response loginUser(UserDTO userDTO) {
 ////        boolean loggedin = logincontroller.login(userDTO);
 ////
-////        if(loggedin) {
-//        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
-//        brugeradministrationCTRL.opretBruger();
-//        System.out.println("UserId: " + brugerDTO.getBrugerId() + "Username: " + brugerDTO.getBrugerNavn());
-//        return Response.ok("OK" + brugerDTO.getBrugerNavn()).build();
+//
+//        Controller controller = new Controller();
+//        controller.opretBruger();
+//        System.out.println("UserId: " + userDTO.getUserId() + "Username: " + userDTO.getUserName() + "UserIni: " + userDTO.getUserIni() + " userPassword: " + userDTO.getUserPassword() + "userRole: " + userDTO.getUserRole() );
+//        return Response.ok("OK" + userDTO.getUserName()).build();
 //
 ////         } else {
 ////            return Response.ok("-1").build();
@@ -48,4 +44,4 @@ package Rest;
 //
 //    }
 //}
-
+//
