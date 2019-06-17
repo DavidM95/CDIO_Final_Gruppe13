@@ -6,6 +6,6 @@ public interface IBrugerDTO {
     String getBrugerNavn();
     String getBrugerPassword();
     String getBrugerIni();
-    String getRolle(int i);
-    String[] getRolleliste();
+    String getBrugerRole();
+//    String[] getRolleliste();
 }

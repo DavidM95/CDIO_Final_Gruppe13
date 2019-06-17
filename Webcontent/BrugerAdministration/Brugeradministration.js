@@ -2,17 +2,10 @@ function opretBruger() {
     alert("jeg er her");
     event.preventDefault();
     var data = $('#opretbruger').serializeJSON();
-    var role = []
-    role[0] = data.userRole1;
-    role[1] = data.userRole2;
-    data.add(role);
-    data.remove(brugerRolle1)
-    data.remove(brugerRolle2)
     alert(data);
     $.ajax({
-        url: 'rest/createUser',
+        url: '/rest/createUser/',
         method: 'POST',
-
         contentType: "application/json", // det visender er json
         data: data,
         success: function (data) {
@@ -27,9 +20,14 @@ function opretBruger() {
     });
 }
 
-function sebruger() {
+
+function GET() {
     $.get("rest/createUser", function (data, status) {
-        $("#ingredienttablebody").html(data);
+        $("#sebruger").html(data);
         alert(status);
     })
 }
+
+
+
+

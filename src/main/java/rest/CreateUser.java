@@ -1,15 +1,13 @@
 package rest;
 
-import DAL.DTO.BrugerDTO;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import DAL.DTO.BrugerDTO;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @Path("createUser")
 
 public class CreateUser {
@@ -18,9 +16,13 @@ public class CreateUser {
     public Response seBruger(BrugerDTO brugerDTO) {
 //        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
 //        brugeradministrationCTRL.LoginChecker(brugerDTO);
-        System.out.println(brugerDTO);
+        System.out.println(brugerDTO.getBrugerId());
+        System.out.println(brugerDTO.getBrugerNavn());
+        System.out.println(brugerDTO.getBrugerIni());
+        System.out.println(brugerDTO.getBrugerPassword());
+        System.out.println(brugerDTO.getBrugerRole());
 
-        return Response.ok("hej" + brugerDTO).build();
+        return Response.ok("hej").build();
     }
 
 
@@ -29,8 +31,13 @@ public class CreateUser {
     public Response opretUser(BrugerDTO brugerDTO) {
 //        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
 //        brugeradministrationCTRL.LoginChecker(brugerDTO);
-        System.out.println(brugerDTO);
-        return Response.ok("OK" + brugerDTO).build();
+        System.out.println(brugerDTO.getBrugerId());
+        System.out.println(brugerDTO.getBrugerNavn());
+        System.out.println(brugerDTO.getBrugerIni());
+        System.out.println(brugerDTO.getBrugerPassword());
+        System.out.println(brugerDTO.getBrugerRole());
+
+        return Response.ok("OK" + brugerDTO.getBrugerNavn() + "velkommen").build();
 
     }
 }

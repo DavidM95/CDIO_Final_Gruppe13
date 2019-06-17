@@ -1,7 +1,6 @@
 package rest;
 
 
-import DAL.DTO.BrugerDTO;
 import DAL.DTO.LoginDTO;
 
 import javax.ws.rs.*;

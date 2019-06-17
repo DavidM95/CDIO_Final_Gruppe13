@@ -5,17 +5,20 @@ public class BrugerDTO implements IBrugerDTO {
 
     private int brugerId;
     private String brugerNavn;
-    private  String brugerPassword;
     private String brugerIni;
-     private String rolle[];
+    private String brugerPassword;
+    private String brugerRole;
 
-    public BrugerDTO(int brugerId, String brugerNavn, String brugerPassword,String brugerIni, String []rolle){
+    public BrugerDTO(int brugerId, String brugerNavn, String brugerIni,
+                     String brugerPassword, String brugerRole){
+
+
 
         this.brugerId = brugerId;
         this.brugerNavn = brugerNavn;
-        this.brugerPassword = brugerPassword;
         this.brugerIni = brugerIni;
-        this.rolle = rolle;
+        this.brugerPassword = brugerPassword;
+        this.brugerRole = brugerRole;
     }
 
     public BrugerDTO(){
@@ -35,12 +38,10 @@ public class BrugerDTO implements IBrugerDTO {
     }
     @Override
     public String getBrugerIni(){return  this.brugerIni;}
-
     @Override
-    public String getRolle(int i) { return this.getRolle(i); }
+    public String getBrugerRole() { return this.brugerRole; }
 
-    @Override
-    public String[] getRolleliste() { return new String[0]; }
+
 
 
     @Override
@@ -48,8 +49,9 @@ public class BrugerDTO implements IBrugerDTO {
         return "BrugerDTO{" +
                 "brugerId=" + brugerId +
                 ", brugerNavn='" + brugerNavn + '\'' +
+                ", brugerIni=" + brugerIni +
                 ", brugerPassword=" + brugerPassword +
-                ", brugerRolle=" + rolle +
+                ", brugerRole=" + brugerRole +
                 '}';
     }
 }

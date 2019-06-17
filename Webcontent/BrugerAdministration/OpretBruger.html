@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Bruger Administration</title>
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.5.5/jquery.smooth-scroll.min.js"></script>-->
     <link rel="stylesheet" href="../Css.Main.css">
-    <script src="../JS.Main.js"></script>
-    <script src="Brugeradministration.js"></script>
-    <script src="jquery-3.1.1.js"></script>
-    <script src="jquery.serialize-object.js"></script>
+    <script src="/jquery-3.1.1.js"></script>
+    <script src="/jquery.serialize-object.js"></script>
+    <script src="/JS.Main.js"></script>
+    <script src="/BrugerAdministration/Brugeradministration.js"></script>
 
 
 
@@ -18,12 +17,9 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 <div class="navbar">
     <ul class="navbar-container">
-        <li class="nav-item"><a href="../index.html" class="left-underline nav-button" data-scroll>Home</a></li>
-        <li class="nav-item"><a href="../Login.html" class="left-underline nav-button" data-scroll>Login</a></li>
-        <li class="nav-item active"><a href="../BrugerAdministration.html" class="left-underline nav-button" data-scroll>Bruger Administration</a></li>
-        <div class="Loggedin">
-            logget ind som "Admin"
-        </div>
+        <li class="nav-item"><a href="/index.html" class="left-underline nav-button" data-scroll>Home</a></li>
+        <li class="nav-item"><a href="/Login/Login.html" class="left-underline nav-button" data-scroll>Login</a></li>
+        <li class="nav-item active"><a href="/BrugerAdministration/BrugerAdministration.html" class="left-underline nav-button" data-scroll>Bruger Administration</a></li>
 
     </ul>
 </div>
@@ -31,10 +27,10 @@
 <h1>Button Group</h1>
 
 <div class="btn-group">
-    <a href='../OpretBruger.html'><button>Opret Bruger</button></a>
-    <a href='../RetBruger.html'><button>Ret Bruger</button></a>
-    <a href='../SeBruger.html'><button>Se Bruger</button></a>
-    <a href='../SletBruger.html'><button>Slet Bruger</button></a>
+    <a href='./OpretBruger.html'><button>Opret Bruger</button></a>
+    <a href='./RetBruger.html'><button>Ret Bruger</button></a>
+    <a href='./SeBruger.html'><button>Se Bruger</button></a>
+    <a href='./SletBruger.html'><button>Slet Bruger</button></a>
 </div>
 <div class="indhold">
 <h2>Opret Bruger</h2>
@@ -52,10 +48,8 @@
     <label for="brugerPassword">Password: </label>
     <input type="text" id="brugerPassword" name="brugerPassword">
 
-    <label for="brugerRolle1">Rolle 1: </label>
-    <input type="text" id="brugerRolle1" name="brugerRolle1">
-    <label for="brugerRolle2">Rolle 2: </label>
-    <input type="text" id="brugerRolle2" name="brugerRolle2">
+    <label for="brugerRole">Role </label>
+    <input type="text" id="brugerRole" name="brugerRole">
 
     <button onclick="opretBruger();">Opret Bruger</button>
 </form>
