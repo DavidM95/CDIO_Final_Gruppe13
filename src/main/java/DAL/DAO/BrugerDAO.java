@@ -2,18 +2,24 @@ package DAL.DAO;
 
 import DAL.DTO.BrugerDTO;
 import DAL.DTO.IBrugerDTO;
+import DAL.IConnect;
+import DAL.IDALException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class BrugerDAO implements IBrugerDAO {
+public class BrugerDAO implements IBrugerDAO, IConnect {
 
 
-    public void createBruger(Connection connection, IBrugerDTO brugerDTO) {
+    public void createBruger(IBrugerDTO brugerDTO) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
+
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Bruger VALUES (?,?,?,?);");
             PreparedStatement roller = connection.prepareStatement("INSERT INTO Roller(brugerId, rolle) VALUES (?,?);");
 
@@ -34,10 +40,29 @@ public class BrugerDAO implements IBrugerDAO {
 
 
         } catch (SQLException e){e.printStackTrace();}
+        closeConnection();
     }
 
-    public BrugerDTO getBruger(Connection connection, int ID) {
+    @Override
+    public void opretBruger(IBrugerDTO user) throws IDALException.DALException {
+
+    }
+
+    @Override
+    public IBrugerDTO getBrugerId(int userId) throws IDALException.DALException {
+        return null;
+    }
+
+    @Override
+    public IBrugerDTO getBrugerPassword(int userId) throws IDALException.DALException {
+        return null;
+    }
+
+    public BrugerDTO getBruger(int ID) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
+
             PreparedStatement statement = connection.prepareStatement("SELECT*FROM Bruger WHERE BrugerID = ?;");
             PreparedStatement roller = connection.prepareStatement("SELECT*FROM Roller WHERE BrugerID = ?;");
 
@@ -65,12 +90,19 @@ public class BrugerDAO implements IBrugerDAO {
 //            }
             return (BrugerDTO) user;
         } catch (SQLException e){e.printStackTrace();}
+        closeConnection();
+        return null;
+    }
 
+    @Override
+    public List<IBrugerDTO> getBrugerList() throws IDALException.DALException {
         return null;
     }
 
 
-    public void updateBruger(Connection connection, IBrugerDTO brugerDTO) {
+    public void retBruger(IBrugerDTO brugerDTO) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
             PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET brugerNavn = ?, ini = ?, password = ? WHERE BrugerID = ?;");
             PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET rolle = ? WHERE BrugerID = ?;");
@@ -90,6 +122,7 @@ public class BrugerDAO implements IBrugerDAO {
 
 
         } catch (SQLException e){e.printStackTrace();}
+        closeConnection();
     }
 
     public void deleteBruger(Connection connection, int ID) {
@@ -105,5 +138,21 @@ public class BrugerDAO implements IBrugerDAO {
 
 
         } catch (SQLException e){e.printStackTrace();}
+    }
+
+
+    @Override
+    public void createConnection() throws SQLException {
+
+    }
+
+    @Override
+    public Connection getConnection() {
+        return null;
+    }
+
+    @Override
+    public void closeConnection() throws SQLException {
+
     }
 }
