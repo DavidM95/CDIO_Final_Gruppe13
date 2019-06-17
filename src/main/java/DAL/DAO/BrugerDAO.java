@@ -45,8 +45,10 @@ public class BrugerDAO implements IBrugerDAO {
 
             roller.setInt(1,ID);
 
-            ResultSet resultSetRoller = statement.executeQuery();
             ResultSet resultSet = statement.executeQuery();
+            System.out.println(resultSet);
+            ResultSet resultSetRoller = roller.executeQuery();
+            System.out.println(resultSetRoller);
 
             ArrayList rolleliste = new ArrayList();
             int index = 0;

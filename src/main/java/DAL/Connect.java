@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Connect implements IConnect {
 
-    private String databaseURL = "jdbc:mysql://ec2-52-30-211-3.eu-west-1.compute.amazonaws.com/s160601?user=s160601&password=ax1hqY3DBtPNqRcsvMGAy";
+    private String databaseURL = "jdbc:mysql://ec2-52-30-211-3.eu-west-1.compute.amazonaws.com/s160601?user=s160601&password=t08HP36o2H0HGQzFhf4qo";
     private Connection connection;
 
     public void createConnection() throws SQLException {

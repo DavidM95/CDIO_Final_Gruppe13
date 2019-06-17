@@ -45,9 +45,10 @@ public class Main {
 
 //        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente","BE", admin, "hejhej"));
 //        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(2,"PeterP","PP", laborant, "hejhej12"));
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(3,"JakobA","JA", farmaceut, "hejhej22"));
+        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(6,"JakobA","JA", farmaceut, "hejhej22"));
         System.out.println("oprettet følgende bruger: " + brugerDTO);
-        System.out.println(brugerDAO.getBruger(connect.getConnection(), 3));
+        System.out.println(brugerDAO.getBruger(connect.getConnection(), 5));
+      //  System.out.println(brugerDAO.getBruger(connect.getConnection(), 4));
 
 
 //        opskriftDAO.createOpskrift(connect.getConnection(),opskriftDTO = new OpskriftDTO(1,"opskrift", date,3));
