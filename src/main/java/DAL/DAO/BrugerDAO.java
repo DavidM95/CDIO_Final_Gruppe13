@@ -14,12 +14,14 @@ public class BrugerDAO implements IBrugerDAO {
 
     public void createBruger(Connection connection, IBrugerDTO brugerDTO) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Bruger VALUES (?,?,?);");
-            PreparedStatement roller = connection.prepareStatement("INSERT INTO Roller VALUES (?,?);");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO Bruger VALUES (?,?,?,?);");
+            PreparedStatement roller = connection.prepareStatement("INSERT INTO Roller(brugerId, rolle) VALUES (?,?);");
 
             statement.setInt(1,brugerDTO.getBrugerID());
             statement.setString(2,brugerDTO.getBrugernavn());
-            statement.setBoolean(3,brugerDTO.getAdmin());
+            statement.setString(3,brugerDTO.getBrugerIni());
+            statement.setString(4,brugerDTO.getPassword());
+
             statement.execute();
 
             roller.setInt(1,brugerDTO.getBrugerID());
@@ -57,7 +59,7 @@ public class BrugerDAO implements IBrugerDAO {
             BrugerDTO brugerDTO = null;
 
             while(resultSet.next()){
-                brugerDTO = new BrugerDTO(resultSet.getInt(1),resultSet.getString(2),resultSet.getBoolean(3),rolleliste);
+                brugerDTO = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"), resultSet.getString("brugerIni"), rolleliste, resultSet.getString("password"));
             }
 
             return brugerDTO;
@@ -67,14 +69,16 @@ public class BrugerDAO implements IBrugerDAO {
         return null;
     }
 
+
     public void updateBruger(Connection connection, IBrugerDTO brugerDTO) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET Brugernavn = ?, Admin = ? WHERE BrugerID = ?;");
-            PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET Rolle = ? WHERE BrugerID = ?;");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET brugerNavn = ?, ini = ?, password = ? WHERE BrugerID = ?;");
+            PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET rolle = ? WHERE BrugerID = ?;");
 
             statement.setString(1,brugerDTO.getBrugernavn());
-            statement.setBoolean(2,brugerDTO.getAdmin());
-            statement.setInt(3,brugerDTO.getBrugerID());
+            statement.setString(2,brugerDTO.getBrugerIni());
+            statement.setString(3,brugerDTO.getPassword());
+            statement.setInt(4,brugerDTO.getBrugerID());
             statement.executeUpdate();
 
             //Ved ikke om den overskriver den allerede gemte rolle. Skal lige testes.
@@ -90,8 +94,8 @@ public class BrugerDAO implements IBrugerDAO {
 
     public void deleteBruger(Connection connection, int ID) {
         try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM Bruger WHERE BrugerID = ?;");
-            PreparedStatement roller = connection.prepareStatement("DELETE FROM Roller WHERE BrugerID = ?;");
+            PreparedStatement statement = connection.prepareStatement("DELETE * FROM Bruger WHERE BrugerID = ?;");
+            PreparedStatement roller = connection.prepareStatement("DELETE * FROM Roller WHERE BrugerID = ?;");
 
             roller.setInt(1,ID);
             roller.execute();

@@ -7,15 +7,17 @@ public class BrugerDTO implements IBrugerDTO {
 
     int brugerID;
     String brugernavn;
-    boolean admin;
     ArrayList<String> roller;
+    String brugerIni;
+    String password;
 
-    public BrugerDTO(int brugerID, String brugernavn, boolean admin, ArrayList<String> roller){
+    public BrugerDTO(int brugerID, String brugernavn, String brugerIni, ArrayList<String> roller, String password){
 
         this.brugerID = brugerID;
         this.brugernavn = brugernavn;
-        this.admin = admin;
         this.roller = roller;
+        this.brugerIni = brugerIni;
+        this.password = password;
 
     }
 
@@ -27,8 +29,12 @@ public class BrugerDTO implements IBrugerDTO {
         return this.brugernavn;
     }
 
-    public Boolean getAdmin() {
-        return this.admin;
+    public void setBrugerID(int brugerID) {
+        this.brugerID = brugerID;
+    }
+
+    public void setBrugernavn(String brugernavn) {
+        this.brugernavn = brugernavn;
     }
 
     public String getRoller(int i) {
@@ -38,11 +44,26 @@ public class BrugerDTO implements IBrugerDTO {
     public List getRolleliste() {return  this.roller;}
 
     @Override
+    public String getBrugerIni() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getRoller() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "BrugerDTO{" +
                 "brugerID=" + brugerID +
                 ", brugernavn='" + brugernavn + '\'' +
-                ", admin=" + admin +
+                ", ini=" + brugerIni +
                 ", roller=" + roller +
                 '}';
     }

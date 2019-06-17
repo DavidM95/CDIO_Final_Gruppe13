@@ -27,6 +27,8 @@ public class Main {
 
         connect.createConnection();
 
+        ArrayList<String> admin = new ArrayList<String>();
+
         ArrayList<String> laborant = new ArrayList<String>();
         laborant.add("Laborant");
 
@@ -39,9 +41,9 @@ public class Main {
         Date date = new Date();
         Date enddate = new Date();
 
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente",true,laborant));
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(2,"Svend",true,produktionsleder));
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(3,"Keith",false,farmaceut));
+        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente","BE", admin, "hejhej"));
+        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"PeterP","PP", laborant, "hejhej12"));
+        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"JakobA","JA", farmaceut, "hejhej22"));
 
         opskriftDAO.createOpskrift(connect.getConnection(),opskriftDTO = new OpskriftDTO(1,"opskrift", date,3));
         opskriftDAO.createOpskrift(connect.getConnection(),opskriftDTO = new OpskriftDTO(2,"dank",date,3));
@@ -56,7 +58,7 @@ public class Main {
         System.out.println(ingrediensDAO.getIngrediens(connect.getConnection(),1).getIngrediensID());
         råvareDAO.getRåvare(connect.getConnection(),1);
 
-        brugerDAO.updateBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente",false,laborant));
+        brugerDAO.updateBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"bente","BE",laborant,"nejnej"));
         opskriftDAO.updateOpskrift(connect.getConnection(),opskriftDTO = new OpskriftDTO(1,"Smertestillende opskrift",date,3));
         produktionDAO.updateProduktion(connect.getConnection(),produktionDTO = new ProduktionDTO(1,20,"igang",2,1,date,enddate));
         ingrediensDAO.updateIngrediens(connect.getConnection(),ingrediensDTO = new IngrediensDTO(1,"CarbonDioxid",300,1));
