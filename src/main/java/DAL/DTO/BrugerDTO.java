@@ -21,6 +21,18 @@ public class BrugerDTO implements IBrugerDTO {
 
     }
 
+    public void setRoller(ArrayList<String> roller) {
+        this.roller = roller;
+    }
+
+    public void setBrugerIni(String brugerIni) {
+        this.brugerIni = brugerIni;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getBrugerID() {
         return this.brugerID;
     }
