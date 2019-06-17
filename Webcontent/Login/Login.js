@@ -5,9 +5,8 @@ function userLogin() {
     var data = $('#loginform').serializeJSON();
     alert(data);
     $.ajax({
-        url: '/rest/LoginService',
+        url: '/rest/loginService/',
         method: 'POST',
-
         contentType: "application/json", // det visender er json
         data: data,
         success: function (data) {

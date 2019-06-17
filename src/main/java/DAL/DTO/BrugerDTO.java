@@ -1,45 +1,47 @@
 package DAL.DTO;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class BrugerDTO implements IBrugerDTO {
 
-    int brugerId;
-    String brugerNavn;
-    String brugerPassword;
-    String brugerIni;
-    ArrayList<String> roller;
+    private int brugerId;
+    private String brugerNavn;
+    private  String brugerPassword;
+    private String brugerIni;
+     private String rolle[];
 
-    public BrugerDTO(int brugerId, String brugerNavn, String brugerPassword,String brugerIni){
+    public BrugerDTO(int brugerId, String brugerNavn, String brugerPassword,String brugerIni, String []rolle){
 
         this.brugerId = brugerId;
         this.brugerNavn = brugerNavn;
         this.brugerPassword = brugerPassword;
         this.brugerIni = brugerIni;
-        this.roller = roller;
-
+        this.rolle = rolle;
     }
 
+    public BrugerDTO(){
+
+    }
+    @Override
     public int getBrugerId() {
         return this.brugerId;
     }
-
+    @Override
     public String getBrugerNavn() {
         return this.brugerNavn;
     }
-
+    @Override
     public String getBrugerPassword() {
         return this.brugerPassword;
     }
-
+    @Override
     public String getBrugerIni(){return  this.brugerIni;}
 
-    public String getRoller(int i) {
-        return this.roller.get(i);
-    }
+    @Override
+    public String getRolle(int i) { return this.getRolle(i); }
 
-    public List getRolleliste() {return  this.roller;}
+    @Override
+    public String[] getRolleliste() { return new String[0]; }
+
 
     @Override
     public String toString() {
@@ -47,7 +49,7 @@ public class BrugerDTO implements IBrugerDTO {
                 "brugerId=" + brugerId +
                 ", brugerNavn='" + brugerNavn + '\'' +
                 ", brugerPassword=" + brugerPassword +
-                ", roller=" + roller +
+                ", brugerRolle=" + rolle +
                 '}';
     }
 }

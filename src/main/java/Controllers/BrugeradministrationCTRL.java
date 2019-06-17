@@ -1,29 +1,23 @@
 //package Controllers;
 //
 //
+//
 //import DAL.DAO.IBrugerDAO;
 //import DAL.IDALException;
 //
 //public class BrugeradministrationCTRL {
 //
-//    public boolean BrugerIdCheck(int brugerId,IBrugerDAO iBrugerDAO) throws IDALException.DALException {
-//        if (iBrugerDAO.getBrugerId(brugerId)!= null) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
+//    public boolean BrugerIdCheck(int brugerId) throws IDALException.DALException {
+//
 //    }
 //
-//    public boolean LoginChecker(int brugerId, String brugerPassword,IBrugerDAO iBrugerDAO){
-//        if (BrugerIdCheck(brugerId){
+//    public boolean LoginChecker(int brugerId, String brugerPassword) throws IDALException.DALException {
 //
-//        }
 //    }
-//    public void opretBruger(int brugerId, String brugerNavn, String brugerIni, String brugerPassword) {
+//    public void opretBruger(int brugerId, String brugerNavn, String brugerIni, String brugerPassword, ArrayList<String> roller) throws IDALException.DALException {
 //
-//        if (!BrugerIdCheck(brugerId)){
-//            IBrugerDAO.opretBruger(brugerId,brugerNavn,brugerIni,brugerPassword);
+////        if (!BrugerIdCheck(brugerId)){
+////            IBrugerDAO.opretBruger(brugerId,brugerNavn,brugerIni,brugerPassword);
 //        }
 //    }
 //}
