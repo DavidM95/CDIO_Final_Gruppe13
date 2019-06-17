@@ -1,6 +1,8 @@
 package Rest;
 
 
+import Controllers.BrugeradministrationCTRL;
+import DAL.DTO.BrugerDTO;
 import data.dto.UserDTO;
 
 import javax.ws.rs.Consumes;
@@ -30,17 +32,12 @@ public class HelloService {
 
 
     @POST
-    public Response loginUser(UserDTO userDTO) {
-//        boolean loggedin = logincontroller.login(userDTO);
-//
-//        if(loggedin) {
+    public Response loginUser() {
+        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
+        brugeradministrationCTRL.LoginChecker()
+            return Response.ok("OK").build();
 
-            System.out.println("Username: " + userDTO.getUserName() + " userPassword: " + userDTO.getUserPassword());
-            return Response.ok("OK" + userDTO.getUserName()).build();
 
-//         } else {
-//            return Response.ok("-1").build();
-//        }
 
     }
 }

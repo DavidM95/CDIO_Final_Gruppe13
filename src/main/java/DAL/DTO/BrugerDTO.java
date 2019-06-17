@@ -5,31 +5,35 @@ import java.util.List;
 
 public class BrugerDTO implements IBrugerDTO {
 
-    int brugerID;
-    String brugernavn;
-    boolean admin;
+    int brugerId;
+    String brugerNavn;
+    String brugerPassword;
+    String brugerIni;
     ArrayList<String> roller;
 
-    public BrugerDTO(int brugerID, String brugernavn, boolean admin, ArrayList<String> roller){
+    public BrugerDTO(int brugerId, String brugerNavn, String brugerPassword,String brugerIni){
 
-        this.brugerID = brugerID;
-        this.brugernavn = brugernavn;
-        this.admin = admin;
+        this.brugerId = brugerId;
+        this.brugerNavn = brugerNavn;
+        this.brugerPassword = brugerPassword;
+        this.brugerIni = brugerIni;
         this.roller = roller;
 
     }
 
-    public int getBrugerID() {
-        return this.brugerID;
+    public int getBrugerId() {
+        return this.brugerId;
     }
 
-    public String getBrugernavn() {
-        return this.brugernavn;
+    public String getBrugerNavn() {
+        return this.brugerNavn;
     }
 
-    public Boolean getAdmin() {
-        return this.admin;
+    public String getBrugerPassword() {
+        return this.brugerPassword;
     }
+
+    public String getBrugerIni(){return  this.brugerIni;}
 
     public String getRoller(int i) {
         return this.roller.get(i);
@@ -40,9 +44,9 @@ public class BrugerDTO implements IBrugerDTO {
     @Override
     public String toString() {
         return "BrugerDTO{" +
-                "brugerID=" + brugerID +
-                ", brugernavn='" + brugernavn + '\'' +
-                ", admin=" + admin +
+                "brugerId=" + brugerId +
+                ", brugerNavn='" + brugerNavn + '\'' +
+                ", brugerPassword=" + brugerPassword +
                 ", roller=" + roller +
                 '}';
     }

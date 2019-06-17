@@ -40,7 +40,7 @@ public class OpskriftDTO implements IOpskriftDTO {
                 "opskriftID=" + opskriftID +
                 ", opskriftnavn='" + opskriftnavn + '\'' +
                 ", dato=" + dato +
-                ", brugerID=" + brugerID +
+                ", brugerId=" + brugerID +
                 '}';
     }
 }

@@ -1,7 +1,9 @@
-import data.Connect;
-import data.IConnect;
-import data.dal.*;
-import data.dto.*;
+
+
+import DAL.Connect;
+import DAL.DAO.*;
+import DAL.DTO.*;
+import DAL.IConnect;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,7 +52,7 @@ public class Main {
         ingrediensDAO.createIngrediens(connect.getConnection(),ingrediensDTO = new IngrediensDTO(2,"salt",5,2));
         råvareDAO.createRåvare(connect.getConnection(),råvareDTO = new RåvareDTO(1,1,"CarbonDioxid",1,false));
 
-        System.out.println(brugerDAO.getBruger(connect.getConnection(),1).getBrugernavn());
+        System.out.println(brugerDAO.getBruger(connect.getConnection(),1).getBrugerNavn());
         System.out.println(opskriftDAO.getOpskrift(connect.getConnection(),1));
         produktionDAO.getProduktion(connect.getConnection(),1);
         System.out.println(ingrediensDAO.getIngrediens(connect.getConnection(),1).getIngrediensID());

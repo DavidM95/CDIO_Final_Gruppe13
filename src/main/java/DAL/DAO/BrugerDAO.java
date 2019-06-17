@@ -17,12 +17,12 @@ public class BrugerDAO implements IBrugerDAO {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Bruger VALUES (?,?,?);");
             PreparedStatement roller = connection.prepareStatement("INSERT INTO Roller VALUES (?,?);");
 
-            statement.setInt(1,brugerDTO.getBrugerID());
-            statement.setString(2,brugerDTO.getBrugernavn());
+            statement.setInt(1,brugerDTO.getBrugerId());
+            statement.setString(2,brugerDTO.getBrugerNavn());
             statement.setBoolean(3,brugerDTO.getAdmin());
             statement.execute();
 
-            roller.setInt(1,brugerDTO.getBrugerID());
+            roller.setInt(1,brugerDTO.getBrugerId());
 
             // Ved ikke om den bare overskriver den allerede gemte rolle. Skal lige testes.
             for(int i = 0; i < brugerDTO.getRolleliste().size(); i++){
@@ -67,39 +67,39 @@ public class BrugerDAO implements IBrugerDAO {
         return null;
     }
 
-    public void updateBruger(Connection connection, IBrugerDTO brugerDTO) {
-        try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET Brugernavn = ?, Admin = ? WHERE BrugerID = ?;");
-            PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET Rolle = ? WHERE BrugerID = ?;");
-
-            statement.setString(1,brugerDTO.getBrugernavn());
-            statement.setBoolean(2,brugerDTO.getAdmin());
-            statement.setInt(3,brugerDTO.getBrugerID());
-            statement.executeUpdate();
-
-            //Ved ikke om den overskriver den allerede gemte rolle. Skal lige testes.
-            for(int i = 0; i < brugerDTO.getRolleliste().size(); i++){
-                roller.setString(1,brugerDTO.getRoller(i));
-                roller.setInt(2, brugerDTO.getBrugerID());
-                roller.executeUpdate();
-            }
-
-
-        } catch (SQLException e){e.printStackTrace();}
-    }
-
-    public void deleteBruger(Connection connection, int ID) {
-        try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM Bruger WHERE BrugerID = ?;");
-            PreparedStatement roller = connection.prepareStatement("DELETE FROM Roller WHERE BrugerID = ?;");
-
-            roller.setInt(1,ID);
-            roller.execute();
-
-            statement.setInt(1,ID);
-            statement.execute();
-
-
-        } catch (SQLException e){e.printStackTrace();}
-    }
+//    public void updateBruger(Connection connection, IBrugerDTO brugerDTO) {
+//        try {
+//            PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET Brugernavn = ?, Admin = ? WHERE BrugerID = ?;");
+//            PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET Rolle = ? WHERE BrugerID = ?;");
+//
+//            statement.setString(1,brugerDTO.getBrugerNavn());
+//            statement.setBoolean(2,brugerDTO.getAdmin());
+//            statement.setInt(3,brugerDTO.getBrugerId());
+//            statement.executeUpdate();
+//
+//            //Ved ikke om den overskriver den allerede gemte rolle. Skal lige testes.
+//            for(int i = 0; i < brugerDTO.getRolleliste().size(); i++){
+//                roller.setString(1,brugerDTO.getRoller(i));
+//                roller.setInt(2, brugerDTO.getBrugerId());
+//                roller.executeUpdate();
+//            }
+//
+//
+//        } catch (SQLException e){e.printStackTrace();}
+//    }
+//
+//    public void deleteBruger(Connection connection, int ID) {
+//        try {
+//            PreparedStatement statement = connection.prepareStatement("DELETE FROM Bruger WHERE BrugerID = ?;");
+//            PreparedStatement roller = connection.prepareStatement("DELETE FROM Roller WHERE BrugerID = ?;");
+//
+//            roller.setInt(1,ID);
+//            roller.execute();
+//
+//            statement.setInt(1,ID);
+//            statement.execute();
+//
+//
+//        } catch (SQLException e){e.printStackTrace();}
+//    }
 }

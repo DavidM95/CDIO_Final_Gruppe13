@@ -61,7 +61,7 @@ public class ProduktionDTO implements IProduktionDTO {
                 ", startdato=" + startdato +
                 ", slutdato=" + slutdato +
                 ", produktionsstatus='" + produktionsstatus + '\'' +
-                ", brugerID=" + brugerID +
+                ", brugerId=" + brugerID +
                 ", opskriftID=" + opskriftID +
                 '}';
     }

@@ -1,14 +1,20 @@
 package DAL.DAO;
 
-import DAL.DTO.BrugerDTO;
 import DAL.DTO.IBrugerDTO;
+import DAL.IDALException;
 
-import java.sql.Connection;
+import java.util.List;
 
 public interface IBrugerDAO {
+    //Create
+    void opretBruger(IBrugerDTO user) throws IDALException.DALException;
+    //Read
+    IBrugerDTO getBrugerId(int userId) throws IDALException.DALException;
+    IBrugerDTO getBrugerPassword(int userId) throws IDALException.DALException;
 
-    void createBruger(Connection connection, IBrugerDTO brugerDTO);
-    BrugerDTO getBruger(Connection connection, int ID);
-    void updateBruger(Connection connection, IBrugerDTO brugerDTO);
-    void deleteBruger(Connection connection, int ID);
+    List<IBrugerDTO> getBrugerList() throws IDALException.DALException;
+    //Update
+    void updateBruger(IBrugerDTO user) throws IDALException.DALException;
+
 }
+
