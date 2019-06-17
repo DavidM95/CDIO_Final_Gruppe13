@@ -37,7 +37,7 @@ public class BrugerDTO implements IBrugerDTO {
         return this.brugerID;
     }
 
-    public String getBrugernavn() {
+    public String getBrugerNavn() {
         return this.brugernavn;
     }
 
@@ -57,18 +57,14 @@ public class BrugerDTO implements IBrugerDTO {
 
     @Override
     public String getBrugerIni() {
-        return null;
+        return this.brugerIni;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
-    @Override
-    public String getRoller() {
-        return null;
-    }
 
     @Override
     public String toString() {
@@ -77,6 +73,7 @@ public class BrugerDTO implements IBrugerDTO {
                 ", brugernavn='" + brugernavn + '\'' +
                 ", ini=" + brugerIni +
                 ", roller=" + roller +
+                ", password=" + password +
                 '}';
     }
 }

@@ -20,7 +20,7 @@ public class Main {
 //        IProduktionDAO produktionDAO = new ProduktionDAO();
 //
 //        IIngrediensDTO ingrediensDTO;
-        IBrugerDTO brugerDTO;
+        IBrugerDTO brugerDTO=null;
 //        IProduktionDTO produktionDTO;
 //        IOpskriftDTO opskriftDTO;
 //        IRåvareDTO råvareDTO;
@@ -42,9 +42,12 @@ public class Main {
         Date date = new Date();
         Date enddate = new Date();
 
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente","BE", admin, "hejhej"));
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"PeterP","PP", laborant, "hejhej12"));
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"JakobA","JA", farmaceut, "hejhej22"));
+
+//        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente","BE", admin, "hejhej"));
+//        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(2,"PeterP","PP", laborant, "hejhej12"));
+        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(3,"JakobA","JA", farmaceut, "hejhej22"));
+        System.out.println("oprettet følgende bruger: " + brugerDTO);
+
 
 //        opskriftDAO.createOpskrift(connect.getConnection(),opskriftDTO = new OpskriftDTO(1,"opskrift", date,3));
 //        opskriftDAO.createOpskrift(connect.getConnection(),opskriftDTO = new OpskriftDTO(2,"dank",date,3));
@@ -53,7 +56,7 @@ public class Main {
 //        ingrediensDAO.createIngrediens(connect.getConnection(),ingrediensDTO = new IngrediensDTO(2,"salt",5,2));
 //        råvareDAO.createRåvare(connect.getConnection(),råvareDTO = new RåvareDTO(1,1,"CarbonDioxid",1,false));
 
-//        System.out.println(brugerDAO.getBruger(connect.getConnection(),1).getBrugernavn());
+//        System.out.println(brugerDAO.getBruger(connect.getConnection(),1).getBrugerNavn());
 //        System.out.println(opskriftDAO.getOpskrift(connect.getConnection(),1));
 //        produktionDAO.getProduktion(connect.getConnection(),1);
 //        System.out.println(ingrediensDAO.getIngrediens(connect.getConnection(),1).getIngrediensID());

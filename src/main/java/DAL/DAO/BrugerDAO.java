@@ -18,7 +18,7 @@ public class BrugerDAO implements IBrugerDAO {
             PreparedStatement roller = connection.prepareStatement("INSERT INTO Roller(brugerId, rolle) VALUES (?,?);");
 
             statement.setInt(1,brugerDTO.getBrugerID());
-            statement.setString(2,brugerDTO.getBrugernavn());
+            statement.setString(2,brugerDTO.getBrugerNavn());
             statement.setString(3,brugerDTO.getBrugerIni());
             statement.setString(4,brugerDTO.getPassword());
 
@@ -46,6 +46,7 @@ public class BrugerDAO implements IBrugerDAO {
             roller.setInt(1,ID);
 
             ResultSet resultSetRoller = statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery();
 
             ArrayList rolleliste = new ArrayList();
             int index = 0;
@@ -54,16 +55,15 @@ public class BrugerDAO implements IBrugerDAO {
                 index++;
             }
 
-            ResultSet resultSet = statement.executeQuery();
-
             BrugerDTO brugerDTO = null;
 
-            while(resultSet.next()){
-                brugerDTO = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"), resultSet.getString("brugerIni"), rolleliste, resultSet.getString("password"));
-            }
 
-            return brugerDTO;
+            IBrugerDTO user = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"),resultSet.getString("ini"), rolleliste,resultSet.getString("password"));
 
+//            while(resultSet.next()){
+//                brugerDTO = new BrugerDTO(resultSet.getInt("brugerId"), resultSet.getString("brugerNavn"), resultSet.getString("brugerIni"), rolleliste, resultSet.getString("password"));
+//            }
+            return (BrugerDTO) user;
         } catch (SQLException e){e.printStackTrace();}
 
         return null;
@@ -75,7 +75,7 @@ public class BrugerDAO implements IBrugerDAO {
             PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET brugerNavn = ?, ini = ?, password = ? WHERE BrugerID = ?;");
             PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET rolle = ? WHERE BrugerID = ?;");
 
-            statement.setString(1,brugerDTO.getBrugernavn());
+            statement.setString(1,brugerDTO.getBrugerNavn());
             statement.setString(2,brugerDTO.getBrugerIni());
             statement.setString(3,brugerDTO.getPassword());
             statement.setInt(4,brugerDTO.getBrugerID());
