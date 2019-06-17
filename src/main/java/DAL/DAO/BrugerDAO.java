@@ -1,5 +1,6 @@
 package DAL.DAO;
 
+import DAL.Connect;
 import DAL.DTO.BrugerDTO;
 import DAL.DTO.IBrugerDTO;
 import DAL.IConnect;
@@ -15,12 +16,12 @@ import java.util.List;
 public class BrugerDAO implements IBrugerDAO, IConnect {
 
 
-    public void createBruger(IBrugerDTO brugerDTO) throws SQLException {
+    public void opretBruger(IBrugerDTO brugerDTO) throws SQLException {
         createConnection();
         Connection connection = getConnection();
         try {
 
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Bruger VALUES (?,?,?,?);");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO Bruger(brugerId, brugerNavn, ini, password) VALUES (?,?,?,?);");
             PreparedStatement roller = connection.prepareStatement("INSERT INTO Roller(brugerId, rolle) VALUES (?,?);");
 
             statement.setInt(1,brugerDTO.getBrugerID());
@@ -44,11 +45,6 @@ public class BrugerDAO implements IBrugerDAO, IConnect {
     }
 
     @Override
-    public void opretBruger(IBrugerDTO user) throws IDALException.DALException {
-
-    }
-
-    @Override
     public IBrugerDTO getBrugerId(int userId) throws IDALException.DALException {
         return null;
     }
@@ -63,8 +59,8 @@ public class BrugerDAO implements IBrugerDAO, IConnect {
         Connection connection = getConnection();
         try {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT*FROM Bruger WHERE BrugerID = ?;");
-            PreparedStatement roller = connection.prepareStatement("SELECT*FROM Roller WHERE BrugerID = ?;");
+            PreparedStatement statement = connection.prepareStatement("SELECT*FROM Bruger WHERE brugerId = ?;");
+            PreparedStatement roller = connection.prepareStatement("SELECT*FROM Roller WHERE brugerId = ?;");
 
             statement.setInt(1,ID);
 
@@ -74,6 +70,7 @@ public class BrugerDAO implements IBrugerDAO, IConnect {
             System.out.println(resultSet);
             ResultSet resultSetRoller = roller.executeQuery();
             System.out.println(resultSetRoller);
+
 
             ArrayList rolleliste = new ArrayList();
             int index = 0;
@@ -107,7 +104,7 @@ public class BrugerDAO implements IBrugerDAO, IConnect {
         createConnection();
         Connection connection = getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET brugerNavn = ?, ini = ?, password = ? WHERE BrugerID = ?;");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Bruger SET brugerNavn = ?, ini = ?, password = ? WHERE BrugerId = ?;");
             PreparedStatement roller = connection.prepareStatement("UPDATE Roller SET rolle = ? WHERE BrugerID = ?;");
 
             statement.setString(1,brugerDTO.getBrugerNavn());
@@ -153,6 +150,7 @@ public class BrugerDAO implements IBrugerDAO, IConnect {
     public Connection getConnection() {
         return null;
     }
+
 
     @Override
     public void closeConnection() throws SQLException {

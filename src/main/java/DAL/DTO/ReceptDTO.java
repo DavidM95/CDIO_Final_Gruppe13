@@ -8,7 +8,7 @@ public class ReceptDTO implements IReceptDTO {
 
     int receptId;
     String receptNavn;
-    Arraylist<> ReceptKomponent;
+//    Arraylist<> ReceptKomponent;
 
     public ReceptDTO(int receptId, String receptNavn){
 

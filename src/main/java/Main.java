@@ -2,6 +2,7 @@ import DAL.Connect;
 import DAL.DAO.*;
 import DAL.DTO.*;
 import DAL.IConnect;
+import DAL.IDALException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Date;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IDALException.DALException {
 
         IConnect connect = new Connect();
 
@@ -45,9 +46,11 @@ public class Main {
 
 //        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(1,"Bente","BE", admin, "hejhej"));
 //        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(2,"PeterP","PP", laborant, "hejhej12"));
-        brugerDAO.createBruger(connect.getConnection(),brugerDTO = new BrugerDTO(6,"JakobA","JA", farmaceut, "hejhej22"));
+        brugerDAO.opretBruger(brugerDTO = new BrugerDTO(8,"JakobA","JA", farmaceut, "hejhej22"));
         System.out.println("oprettet følgende bruger: " + brugerDTO);
-        System.out.println(brugerDAO.getBruger(connect.getConnection(), 5));
+
+//        System.out.println(brugerDAO.getBruger( 8) + brugerDTO.getRoller(8));
+
       //  System.out.println(brugerDAO.getBruger(connect.getConnection(), 4));
 
 

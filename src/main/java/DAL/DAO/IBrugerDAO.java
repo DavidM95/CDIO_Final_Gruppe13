@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IBrugerDAO {
 
-    void opretBruger(IBrugerDTO user) throws IDALException.DALException;
+    void opretBruger(IBrugerDTO user) throws IDALException.DALException, SQLException;
 
     IBrugerDTO getBrugerId(int userId) throws IDALException.DALException;
 
