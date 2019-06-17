@@ -1,14 +1,18 @@
-//package DAL.DAO;
-//
-//import DAL.DTO.IRåvareDTO;
-//import DAL.DTO.RåvareDTO;
-//
-//import java.sql.Connection;
-//
-//public interface IRåvareDAO {
-//
-//    void createRåvare(Connection connection, IRåvareDTO råvareDTO);
-//    RåvareDTO getRåvare(Connection connection, int ID);
-//    void updateRåvare(Connection connection, IRåvareDTO råvareDTO);
-//    void deleteRåvare(Connection connection, int ID);
-//}
+package DAL.DAO;
+
+import DAL.DTO.IRåvareDTO;
+import DAL.DTO.RåvareDTO;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public interface IRåvareDAO {
+
+    void createRåvare(IRåvareDTO råvareDTO) throws SQLException;
+
+    RåvareDTO getRåvare(int ID) throws SQLException;
+
+    void retRåvare(IRåvareDTO råvareDTO) throws SQLException;
+
+    void deleteRåvare(int ID) throws SQLException;
+}

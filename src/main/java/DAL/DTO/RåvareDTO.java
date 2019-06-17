@@ -1,50 +1,37 @@
-//package DAL.DTO;
-//
-//public class RåvareDTO implements IRåvareDTO{
-//
-//    int produktionsID;
-//    int ingrediensID;
-//    String råvarenavn;
-//    int mængde;
-//    boolean genbestilling;
-//
-//    public RåvareDTO(int produktionsID, int ingrediensID, String råvarenavn, int mængde, boolean genbestilling){
-//
-//        this.produktionsID = produktionsID;
-//        this.ingrediensID = ingrediensID;
-//        this.råvarenavn = råvarenavn;
-//        this.genbestilling = genbestilling;
-//    }
-//
-//
-//    public int getProduktionsID() {
-//        return this.produktionsID;
-//    }
-//
-//    public int getIngrediensID() {
-//        return this.ingrediensID;
-//    }
-//
-//    public String getRåvarenavn() {
-//        return this.råvarenavn;
-//    }
-//
-//    public int getmængde() {
-//        return this.mængde;
-//    }
-//
-//    public boolean getGenbestilling() {
-//        return this.genbestilling;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "RåvareDTO{" +
-//                "produktionsID=" + produktionsID +
-//                ", ingrediensID=" + ingrediensID +
-//                ", råvarenavn='" + råvarenavn + '\'' +
-//                ", mængde=" + mængde +
-//                ", genbestilling=" + genbestilling +
-//                '}';
-//    }
-//}
+package DAL.DTO;
+
+public class RåvareDTO implements IRåvareDTO{
+
+    int råvareId;
+    String råvarenavn;
+    String leverandør;
+
+    public RåvareDTO(int råvareId, String råvarenavn, String leverandør){
+
+        this.råvareId = råvareId;
+        this.råvarenavn = råvarenavn;
+        this.leverandør = leverandør;
+    }
+
+
+    public int getRåvareId() {
+        return this.råvareId;
+    }
+
+    public String getRåvarenavn() {
+        return this.råvarenavn;
+    }
+
+    public String getLeverandør() {
+        return this.leverandør;
+    }
+
+    @Override
+    public String toString() {
+        return "RåvareDTO{" +
+                ", råvareId=" + råvareId +
+                ", råvarenavn='" + råvarenavn + '\'' +
+                ", leverandør=" + leverandør +
+                '}';
+    }
+}

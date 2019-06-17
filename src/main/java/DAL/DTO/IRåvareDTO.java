@@ -1,11 +1,9 @@
-//package DAL.DTO;
-//
-//public interface IRåvareDTO {
-//
-//    int getProduktionsID();
-//    int getIngrediensID();
-//    String getRåvarenavn();
-//    int getmængde();
-//    boolean getGenbestilling();
-//
-//}
+package DAL.DTO;
+
+public interface IRåvareDTO {
+
+    int getRåvareId();
+    String getRåvarenavn();
+    String getLeverandør();
+
+}
