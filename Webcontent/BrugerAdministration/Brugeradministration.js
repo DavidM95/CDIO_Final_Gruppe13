@@ -1,11 +1,10 @@
-
-function userLogin() {
+function opretBruger() {
     alert("jeg er her");
     event.preventDefault();
-    var data = $('#loginform').serializeJSON();
+    var data = $('#opretbruger').serializeJSON();
     alert(data);
     $.ajax({
-        url: '/rest/LoginService',
+        url: 'rest/createUser',
         method: 'POST',
 
         contentType: "application/json", // det visender er json
@@ -22,6 +21,9 @@ function userLogin() {
     });
 }
 
-
-
-
+function sebruger() {
+    $.get("rest/createUser", function (data, status) {
+        $("#ingredienttablebody").html(data);
+        alert(status);
+    })
+}
