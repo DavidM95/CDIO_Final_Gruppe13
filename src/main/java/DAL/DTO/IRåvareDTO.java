@@ -2,10 +2,8 @@ package DAL.DTO;
 
 public interface IRåvareDTO {
 
-    int getProduktionsID();
-    int getIngrediensID();
+    int getRåvareId();
     String getRåvarenavn();
-    int getmængde();
-    boolean getGenbestilling();
+    String getLeverandør();
 
 }

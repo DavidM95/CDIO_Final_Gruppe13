@@ -2,34 +2,38 @@ package DAL.DAO;
 
 import DAL.DTO.IRåvareDTO;
 import DAL.DTO.RåvareDTO;
+import DAL.IConnect;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RåvareDAO implements IRåvareDAO {
+public class RåvareDAO implements IRåvareDAO, IConnect {
 
-    public void createRåvare(Connection connection, IRåvareDTO råvareDTO) {
+    public void createRåvare(IRåvareDTO råvareDTO) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT into Råvare values(?,?,?,?,?);");
+            PreparedStatement statement = connection.prepareStatement("INSERT into Råvare values(?,?,?);");
 
-            statement.setInt(1, råvareDTO.getProduktionsID());
-            statement.setInt(2, råvareDTO.getIngrediensID());
-            statement.setString(3, råvareDTO.getRåvarenavn());
-            statement.setInt(4, råvareDTO.getmængde());
-            statement.setBoolean(5, råvareDTO.getGenbestilling());
+            statement.setInt(1, råvareDTO.getRåvareId());
+            statement.setString(2, råvareDTO.getRåvarenavn());
+            statement.setString(3, råvareDTO.getLeverandør());
 
             statement.execute();
 
         } catch (SQLException e){
             e.printStackTrace();
         }
+        closeConnection();
     }
 
-    public RåvareDTO getRåvare(Connection connection, int ID) {
+    public RåvareDTO getRåvare(int ID) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Råvare WHERE IngrediensID = ?;");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Råvare WHERE RåvareID = ?;");
 
             statement.setInt(1, ID);
 
@@ -38,7 +42,7 @@ public class RåvareDAO implements IRåvareDAO {
             RåvareDTO råvareDTO = null;
 
             while (resultSet.next()){
-                råvareDTO = new RåvareDTO(resultSet.getInt(1), resultSet.getInt(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getBoolean(5));
+                råvareDTO = new RåvareDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3));
             }
 
             return råvareDTO;
@@ -50,16 +54,15 @@ public class RåvareDAO implements IRåvareDAO {
         return null;
     }
 
-    public void updateRåvare(Connection connection, IRåvareDTO råvareDTO) {
+    public void retRåvare(IRåvareDTO råvareDTO) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE Råvare SET ProduktionsID = ?, IngrediensID = ?, Råvarenavn = ?, Mængde = ?, Genbestilling = ? WHERE IngrediensID = ?;");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Råvare SET Råvarenavn = ?, Leverandør = ? WHERE RåvareId = ?;");
 
-            statement.setInt(1, råvareDTO.getProduktionsID());
-            statement.setInt(2, råvareDTO.getIngrediensID());
-            statement.setString(3, råvareDTO.getRåvarenavn());
-            statement.setInt(4, råvareDTO.getmængde());
-            statement.setBoolean(5, råvareDTO.getGenbestilling());
-            statement.setInt(6, råvareDTO.getIngrediensID());
+            statement.setInt(3, råvareDTO.getRåvareId());
+            statement.setString(1, råvareDTO.getRåvarenavn());
+            statement.setString(2, råvareDTO.getLeverandør());
 
             statement.executeUpdate();
 
@@ -68,9 +71,11 @@ public class RåvareDAO implements IRåvareDAO {
         }
     }
 
-    public void deleteRåvare(Connection connection, int ID) {
+    public void deleteRåvare(int ID) throws SQLException {
+        createConnection();
+        Connection connection = getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("DELETE from Råvare WHERE IngrediensID  = ?;");
+            PreparedStatement statement = connection.prepareStatement("DELETE from Råvare WHERE RåvareId  = ?;");
 
             statement.setInt(1, ID);
 
@@ -78,6 +83,21 @@ public class RåvareDAO implements IRåvareDAO {
         } catch (SQLException e){
             e.printStackTrace();
         }
+
+    }
+
+    @Override
+    public void createConnection() throws SQLException {
+
+    }
+
+    @Override
+    public Connection getConnection() {
+        return null;
+    }
+
+    @Override
+    public void closeConnection() throws SQLException {
 
     }
 }
