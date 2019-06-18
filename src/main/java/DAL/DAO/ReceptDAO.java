@@ -15,10 +15,11 @@ public class ReceptDAO implements IReceptDAO, IConnect {
         Connection connection = getConnection();
         try {
 
-            PreparedStatement statement = connection.prepareStatement("INSERT into Opskrift values(?,?);");
+            PreparedStatement statement = connection.prepareStatement("INSERT into Opskrift values(?,?,?);");
 
             statement.setInt(1, receptDTO.getReceptId()) ;
             statement.setString(2, receptDTO.getReceptNavn());
+            statement.setArray(3, receptDTO.getReceptKomponent());
             statement.execute();
 
         } catch (SQLException e){
@@ -40,7 +41,7 @@ public class ReceptDAO implements IReceptDAO, IConnect {
             IReceptDTO receptDTO = null;
 
             while (resultSet.next()){
-                receptDTO = new ReceptDTO(resultSet.getInt(1), resultSet.getString(2));
+                receptDTO = new ReceptDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getArray(3));
             }
 
             return receptDTO;

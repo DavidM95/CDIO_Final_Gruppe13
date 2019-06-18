@@ -2,19 +2,21 @@ package DAL.DTO;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
+import DAL.DTO.ReceptKomponentDTO;
 
-public class ReceptDTO implements IReceptDTO {
+public class ReceptDTO implements IReceptDTO  {
 
     int receptId;
     String receptNavn;
-    Arraylist<> ReceptKomponent;
+    Array[] receptKomponent;
 
-    public ReceptDTO(int receptId, String receptNavn){
+
+
+    public ReceptDTO(int receptId, String receptNavn, ArrayList<ReceptKomponentDTO> receptKomponenter){
 
         this.receptId = receptId;
         this.receptNavn = receptNavn;
-
+        this.receptKomponent=receptKomponenter;
     }
 
     public int getReceptId() {
@@ -23,6 +25,10 @@ public class ReceptDTO implements IReceptDTO {
 
     public String getReceptNavn() {
         return this.receptNavn;
+    }
+
+    public ArrayList<ReceptKomponentDTO> getReceptKomponent() {
+        return receptKomponent;
     }
 
     @Override
