@@ -12,18 +12,18 @@ import javax.ws.rs.core.Response;
 
 public class CreateUser {
 
-    @GET
-    public Response seBruger(BrugerDTO brugerDTO) {
-//        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
-//        brugeradministrationCTRL.LoginChecker(brugerDTO);
-        System.out.println(brugerDTO.getBrugerId());
-        System.out.println(brugerDTO.getBrugerNavn());
-        System.out.println(brugerDTO.getBrugerIni());
-        System.out.println(brugerDTO.getBrugerPassword());
-        System.out.println(brugerDTO.getBrugerRole());
-
-        return Response.ok("hej").build();
-    }
+//    @GET
+//    public Response seBruger(BrugerDTO brugerDTO) {
+////        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
+////        brugeradministrationCTRL.LoginChecker(brugerDTO);
+//        System.out.println(brugerDTO.getBrugerId());
+//        System.out.println(brugerDTO.getBrugerNavn());
+//        System.out.println(brugerDTO.getBrugerIni());
+//        System.out.println(brugerDTO.getBrugerPassword());
+//        System.out.println(brugerDTO.getBrugerRole());
+//
+//        return Response.ok("hej").build();
+//    }
 
 
 
