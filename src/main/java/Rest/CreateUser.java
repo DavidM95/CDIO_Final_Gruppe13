@@ -1,7 +1,10 @@
-package rest;
+package Rest;
 
 
+import Controllers.BrugeradministrationCTRL;
 import DAL.DTO.BrugerDTO;
+import DAL.IDALException;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,9 +31,9 @@ public class CreateUser {
 
 
     @POST
-    public Response opretUser(BrugerDTO brugerDTO) {
-//        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
-//        brugeradministrationCTRL.LoginChecker(brugerDTO);
+    public Response opretBruger(BrugerDTO brugerDTO) throws IDALException.DALException {
+        BrugeradministrationCTRL brugeradministrationCTRL = new BrugeradministrationCTRL();
+        brugeradministrationCTRL.LoginChecker(brugerDTO.getBrugerId(),brugerDTO.getBrugerPassword());
         System.out.println(brugerDTO.getBrugerId());
         System.out.println(brugerDTO.getBrugerNavn());
         System.out.println(brugerDTO.getBrugerIni());

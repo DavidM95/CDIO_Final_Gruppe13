@@ -21,12 +21,12 @@ function opretBruger() {
 }
 
 
-function GET() {
-    $.get("rest/createUser", function (data, status) {
-        $("#sebruger").html(data);
-        alert(status);
-    })
-}
+// function GET() {
+//     $.get("rest/createUser", function (data, status) {
+//         $("#sebruger").html(data);
+//         alert(status);
+//     })
+// }
 
 
 
